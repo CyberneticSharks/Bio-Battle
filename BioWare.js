@@ -16,9 +16,7 @@ canvas.height = 576 * 1.5;
 
 
 let guard = 0;
-if(guard == 2){
-  document.getElementById("interface").onclick = window.location.reload();
-}
+if(guard == 0){
 document.getElementById("interface").onclick = Fight();
 function Fight(){
   document.getElementById('gameMusic').play();
@@ -258,4 +256,5 @@ window.addEventListener('keyup', (e) => {
         }
       }
     }, 1000);
-};
+  };
+};  
