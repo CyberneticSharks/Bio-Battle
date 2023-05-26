@@ -15,11 +15,17 @@ canvas.height = 576 * 1.5;
     ctx.fillText("Player2:<^> + 'Enter'", canvas.width/2, canvas.height/2+60);
 
 
-
-document.getElementById("interface").onclick = function(){
+let guard = 0;
+if(guard == 2){
+  document.getElementById("interface").onclick = window.location.reload();
+}
+document.getElementById("interface").onclick = Fight();
+function Fight(){
+  document.getElementById('gameMusic').play();
   document.getElementById('properties').style.display = 'flex';//Always put it in brackets
   const PvPtimer = new Timer(100,1);//Max time, rate it decreases
   document.getElementById('timer').innerHTML = PvPtimer.timeStart;
+  guard++
 
   //Player1 stats
   const player1 = new Avatar({
