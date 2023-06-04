@@ -1,6 +1,3 @@
-import { Avatar } from './Avatar.js';
-import { Timer } from './Timer.js';
-import { drawPixel } from './drawPixel.js';
 const canvas = document.getElementById('interface')
 const ctx = canvas.getContext('2d')
 canvas.width = 1056 * 1.5;
@@ -13,17 +10,15 @@ canvas.height = 576 * 1.5;
     ctx.fillText("Player1:AWD + Z", canvas.width/2, canvas.height/2 -60);
     ctx.fillText("Click to Begin", canvas.width/2, canvas.height/2);
     ctx.fillText("Player2:<^> + 'Enter'", canvas.width/2, canvas.height/2+60);
-
-
 let guard = 0;
 if(guard == 0){
-document.getElementById("interface").onclick = Fight();
-function Fight(){
+document.getElementById("interface").onclick = Begin();
+function Begin (){
   document.getElementById('gameMusic').play();
   document.getElementById('properties').style.display = 'flex';//Always put it in brackets
   const PvPtimer = new Timer(100,1);//Max time, rate it decreases
   document.getElementById('timer').innerHTML = PvPtimer.timeStart;
-  guard++
+  guard = 1;
 
   //Player1 stats
   const player1 = new Avatar({
@@ -168,7 +163,7 @@ function animate(){
       player2.switchSprite('jump')
     }
     //Game End Conditions
-    if(player1.health <= 0 || player2.health <= 0){
+    if(player1.health <= 0 || player2.health <= 0 || PvPtimer.time == 0){
       document.getElementById("gameEnd").style.display = 'flex';
       if(player1.health == 0 && player2.health == 0){ 
       document.getElementById("gameEnd").innerHTML = 'Tie';
@@ -257,4 +252,4 @@ window.addEventListener('keyup', (e) => {
       }
     }, 1000);
   };
-};  
+};

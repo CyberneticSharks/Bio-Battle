@@ -1,4 +1,4 @@
-export class Timer{
+class Timer{
     constructor(timeStart, changeBy){
       this.timeStart = timeStart;
       this.changeBy = changeBy;
