@@ -1,5 +1,4 @@
-import { drawPixel } from './drawPixel.js';
-export class Avatar extends drawPixel{
+class Avatar extends drawPixel{
         constructor({position, velocity, canvas, ctx, floor, scale, 
           frames, imgsrc, sprites, offset1}, name, dx, dy, dw, dh){
         super({

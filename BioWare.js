@@ -2,7 +2,6 @@ const canvas = document.getElementById('interface')
 const ctx = canvas.getContext('2d')
 canvas.width = 1056 * 1.5;
 canvas.height = 576 * 1.5;
-
     ctx.fillRect(document.getElementById('industry').src,0, 0, canvas.width, canvas.height);
     ctx.font = "40px Arial";
     ctx.fillStyle = "gold";
@@ -10,9 +9,7 @@ canvas.height = 576 * 1.5;
     ctx.fillText("Player1:AWD + Z", canvas.width/2, canvas.height/2 -60);
     ctx.fillText("Click to Begin", canvas.width/2, canvas.height/2);
     ctx.fillText("Player2:<^> + 'Enter'", canvas.width/2, canvas.height/2+60);
-let guard = 0;
-if(guard == 0){
-document.getElementById("interface").onclick = Begin();
+
 function Begin (){
   document.getElementById('gameMusic').play();
   document.getElementById('properties').style.display = 'flex';//Always put it in brackets
@@ -48,10 +45,6 @@ function Begin (){
         imgsrc: 'Cyborg/Cyborg_doublejump.png',
         frames: 4
       },
-      hurt:{
-        imgsrc: 'Cyborg/Cyborg_hurt.png',
-        frames: 2
-      },
       death:{
         imgsrc: 'Cyborg/Cyborg_death.png',
         frames: 6
@@ -85,10 +78,6 @@ function Begin (){
         imgsrc: 'Punk/Punk_doublejump.png',
         frames: 8
       },
-      hurt:{
-        imgsrc: 'Punk/Punk_hurt.png',
-        frames: 2
-      },
       death:{
         imgsrc: 'Punk/Punk_death.png',
         frames: 2
@@ -108,6 +97,7 @@ function Begin (){
     position:{x:0,y:0}, 
     canvas: canvas, ctx: ctx, 
     scale: 1, frames: 0, imgsrc: "Background/industry.png"});
+  /*
   const screens = new drawPixel({
     position:{x:canvas.width/2,y:canvas.height - 135}, 
     canvas: canvas, ctx: ctx, 
@@ -121,15 +111,16 @@ function Begin (){
     canvas: canvas, ctx: ctx, 
     scale: 5, frames: 4, imgsrc: "Screen1R.png"});
 //an be taken out if needed
-
+*/
 function animate(){
     window.requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     industry.drawBackground();
+    /*
     screens.drawItems();
     hScreen.drawItems();
     hScreenR.drawItems();
-
+    */
     //Player 1's movements
     player1.update(player2);
     if(keySet.d.pressed == true && player1.lastKey == 'd' && player1.position.x < 1440){
@@ -174,7 +165,7 @@ function animate(){
       }
       PvPtimer.changeBy = 0;
     };
-  }
+  };
 animate();
 //player1
 window.addEventListener('keydown', (e) => {
@@ -236,8 +227,7 @@ window.addEventListener('keyup', (e) => {
     keySet.arrowleft.pressed = false;
     break
   }});
-
-  //Timer
+  //Timer check
     setInterval(() => {
       PvPtimer.displayTimerDown();
       if(PvPtimer.timeStart <= 0){
@@ -249,7 +239,6 @@ window.addEventListener('keyup', (e) => {
         } else if(player1.health < player2.health){
           document.getElementById("gameEnd").innerHTML = 'Player 2 Wins';
         }
-      }
+      };
     }, 1000);
   };
-};

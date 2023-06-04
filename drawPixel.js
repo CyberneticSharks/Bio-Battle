@@ -1,4 +1,4 @@
-export class drawPixel{
+class drawPixel{
     constructor({position, canvas, ctx, scale, imgsrc, frames, sprites, offset1 = {x:0, y:0}}){
         this.position = position;
         this.canvas = canvas;
